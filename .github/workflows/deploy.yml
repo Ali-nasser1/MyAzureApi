@@ -4,8 +4,6 @@ on:
   pull_request:
     branches:
       - development  # تشغيل الاختبارات عند PR إلى development
-  push:
-    branches:
       - main  # تنفيذ CI/CD عند الدمج إلى main
 
 jobs:
