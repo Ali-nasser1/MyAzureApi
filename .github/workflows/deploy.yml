@@ -4,6 +4,8 @@ on:
   pull_request:
     branches:
       - development  # تشغيل الاختبارات عند PR إلى development
+  push:
+    branches:
       - main  # تنفيذ CI/CD عند الدمج إلى main
 
 jobs:
@@ -33,7 +35,7 @@ jobs:
     name: Build & Deploy to Docker Hub
     runs-on: ubuntu-latest
     needs: build  # لا يتم تنفيذ هذا إلا بعد نجاح `build`
-    if: github.ref == 'refs/heads/main' 
+    if: github.ref == 'refs/heads/main'  
 
     steps:
       - name: Checkout Repository
