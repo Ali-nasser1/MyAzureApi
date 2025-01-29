@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  app:
+    image: ${DOCKER_USERNAME}/my-app:${TAG:-latest}
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://0.0.0.0:80  # Binding to port 80 for production
+    ports:
+      - "80:80"  # Expose port 80 for the app
+    command: dotnet MyAzureApi.dll  # Run the app in production mode (no `dotnet watch`)
+
+  redis:
+    image: redis:alpine
