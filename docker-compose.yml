@@ -1,0 +1,11 @@
+services:
+  app:
+    image: ${DOCKER_USERNAME}/my-app:${TAG:-latest}
+    build: .
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+    ports:
+      - "80:80"
+
+  redis:
+    image: redis:alpine

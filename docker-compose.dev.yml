@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  app:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=${ASPNETCORE_ENVIRONMENT}
+      - ASPNETCORE_URLS=${ASPNETCORE_URLS}
+    volumes:
+      - ./:/src
+    ports:
+      - "${PORT}:${PORT}"
+    command: dotnet watch run --urls ${ASPNETCORE_URLS}
+
+  redis:
+    image: redis:alpine
